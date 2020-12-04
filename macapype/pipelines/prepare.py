@@ -120,7 +120,7 @@ def _create_prep_pipeline(params, name="prep_pipeline"):
                                    name="denoise")
 
         if "reorient" in params.keys():
-            prep_pipeline.connect(reorient_pipe, 'swap_dim.out_file',
+            prep_pipeline.connect(reorient_pipe, 'reorient.out_file',
                                   denoise_first, 'input_image')
         else:
             prep_pipeline.connect(inputnode, 'img',
@@ -137,7 +137,7 @@ def _create_prep_pipeline(params, name="prep_pipeline"):
         prep_pipeline.connect(denoise_first, 'output_image',
                               crop, 'in_file')
     elif "reorient" in params.keys():
-        prep_pipeline.connect(reorient_pipe, 'swap_dim.out_file',
+        prep_pipeline.connect(reorient_pipe, 'reorient.out_file',
                               crop, 'in_file')
     else:
         prep_pipeline.connect(inputnode, 'img',
@@ -230,7 +230,7 @@ def _create_mapnode_prep_pipeline(params, name="mapnode_prep_pipeline"):
             iterfield=["input_image"])
 
         if "reorient" in params.keys():
-            mapnode_prep_pipeline.connect(reorient_pipe, 'swap_dim.out_file',
+            mapnode_prep_pipeline.connect(reorient_pipe, 'reorient.out_file',
                                           denoise_first, 'input_image')
         else:
             mapnode_prep_pipeline.connect(inputnode, 'list_img',
@@ -247,7 +247,7 @@ def _create_mapnode_prep_pipeline(params, name="mapnode_prep_pipeline"):
         mapnode_prep_pipeline.connect(denoise_first, 'output_image',
                                       crop, 'in_file')
     elif "reorient" in params.keys():
-        mapnode_prep_pipeline.connect(reorient_pipe, 'swap_dim.out_file',
+        mapnode_prep_pipeline.connect(reorient_pipe, 'reorient.out_file',
                                       crop, 'in_file')
     else:
         mapnode_prep_pipeline.connect(inputnode, 'list_img',
@@ -388,10 +388,10 @@ def create_short_preparation_pipe(params, name="short_preparation_pipe"):
         if "reorient" in params.keys():
 
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           bet_crop, 't1_file')
             data_preparation_pipe.connect(reorient_T2_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           bet_crop, 't2_file')
         else:
             data_preparation_pipe.connect(av_T1, 'avg_img',
@@ -422,14 +422,14 @@ def create_short_preparation_pipe(params, name="short_preparation_pipe"):
 
         if "reorient" in params.keys():
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           align_T2_on_T1, 'reference')
             data_preparation_pipe.connect(reorient_T2_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           align_T2_on_T1, 'in_file')
 
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           crop_T1, 'in_file')
         else:
             data_preparation_pipe.connect(av_T1, 'avg_img',
@@ -758,10 +758,10 @@ def create_short_preparation_noT1_pipe(params,
         if "reorient" in params.keys():
 
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           bet_crop, 't1_file')
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           bet_crop, 't2_file')
         else:
             data_preparation_pipe.connect(av_T1, 'avg_img',
@@ -783,7 +783,7 @@ def create_short_preparation_noT1_pipe(params,
 
         if "reorient" in params.keys():
             data_preparation_pipe.connect(reorient_T1_pipe,
-                                          'swap_dim.out_file',
+                                          'reorient.out_file',
                                           crop_T1, 'in_file')
         else:
             data_preparation_pipe.connect(av_T1, 'avg_img',
