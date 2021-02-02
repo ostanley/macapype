@@ -218,7 +218,7 @@ WORKDIR /opt/packages/
 RUN git clone https://github.com/ostanley/macapype.git
 WORKDIR /opt/packages/macapype
 
-RUN git checkout master
+RUN git checkout atlasBrex
 RUN python3 setup.py develop
 
 RUN echo $(which python) && \
