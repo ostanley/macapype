@@ -283,6 +283,10 @@ class AtlasBREXInputSpec(CommandLineInputSpec):
         0.5, usedefault=True, desc='f', position=4, argstr="-f %f",
         mandatory=True)
 
+    g = traits.Float(
+        0, usedefault=True, desc='g', position=8, argstr="-g %f",
+        mandatory=False)
+
     wrp = traits.String(
         "10,10,10", usedefault=True, desc="wrp", position=5, argstr="-wrp %s",
         mandatory=True)
