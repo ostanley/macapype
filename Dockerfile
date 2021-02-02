@@ -215,7 +215,7 @@ RUN mkdir -p /opt/packages/
 ADD https://api.github.com/repos/macatools/macapype/git/refs/heads/master version.json
 WORKDIR /opt/packages/
 
-RUN git clone https://github.com/macatools/macapype.git
+RUN git clone https://github.com/ostanley/macapype.git
 WORKDIR /opt/packages/macapype
 
 RUN git checkout master
